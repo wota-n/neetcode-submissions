@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int,int> count;
+        
+        for(const auto& num : nums){
+            count[num]++;
+        }
+
+        vector<pair<int,int>> arr;
+        
+        for(auto& copy : count){
+            arr.push_back({copy.second,copy.first});
+        }
+
+        sort(arr.rbegin(),arr.rend());
+
+        vector<int> result;
+
+        for(int i=0; i<k; ++i){
+            result.push_back(arr[i].second);
+        }
+
+        return result;
+    }
+};
